@@ -1,0 +1,12 @@
+{% extends 'base.html' %} {% block title %} post detail {% endblock title %}
+{%block content %}
+<a href="{% url 'blog:post-list' %}">back to post list</a>
+<h1>post detail</h1>
+
+title:{{post.title}} <br />
+
+body:{{post.body}} <br />
+
+author:{{post.author}} <br />
+
+date published:{{post.created_at}} {% endblock content %}
