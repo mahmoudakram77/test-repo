@@ -4,6 +4,6 @@
 
 {% for post in posts %}
 <ul>
-  <a href="{% url 'blog:post-detail' post.slug %}"> <li>{{post.title}}</li></a>
+  <a href="{{ post.get_absolute_url }}"> <li>{{post.title}}</li></a>
 </ul>
 {% endfor %} {% endblock content %}
