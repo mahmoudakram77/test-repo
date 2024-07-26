@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+  
+  {% if sent %}
+    <h1>Email Successfully Sent</h1>
+    <p>
+      The post "{{ post.title }}" was successfully sent to {{ recipient_email }}.
+    </p>
+    <p>
+      The email was sent by {{ sender_email }}.
+    </p>
+  {% else %}
+    <h1>Share "{{ post.title }}" by Email</h1>
+    <div class="container-fluid">
+      <form class='form-control' action="" method='post'>
+        {% csrf_token %}
+        {{ form|crispy }}
+        <input type="submit" value='Send Email'>
+      </form>
+    </div>
+  {% endif %}
+    
+{% endblock content %}

@@ -9,4 +9,6 @@ body:{{post.body}} <br />
 
 author:{{post.author}} <br />
 
-date published:{{post.created_at}} {% endblock content %}
+date published:{{post.created_at}} 
+<a href="{% url 'blog:post-share' post.slug %}">share</a>
+{% endblock content %}
