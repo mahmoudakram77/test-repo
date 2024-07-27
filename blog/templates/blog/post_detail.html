@@ -1,14 +1,43 @@
-{% extends 'base.html' %} {% block title %} post detail {% endblock title %}
-{%block content %}
-<a href="{% url 'blog:post-list' %}">back to post list</a>
-<h1>post detail</h1>
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
 
-title:{{post.title}} <br />
+{% block title %}
+Post Detail
+{% endblock title %}
 
-body:{{post.body}} <br />
+{% block content %}
+<a href="{% url 'blog:post-list' %}">Back to Post List</a>
+<h1>Post Detail</h1>
 
-author:{{post.author}} <br />
+Title: {{ post.title }} <br />
+Body: {{ post.body }} <br />
+Author: {{ post.author }} <br />
+Date Published: {{ post.created_at }} <br />
 
-date published:{{post.created_at}} 
-<a href="{% url 'blog:post-share' post.slug %}">share</a>
+<a href="{% url 'blog:post-share' post.slug %}">Share</a>
+
+<!-- Comment Form -->
+<h2>add new comment</h2>
+<form style='width:300px;' method="post" action="{% url 'blog:post-comment' post.slug %}">
+    {% csrf_token %}
+    {{ comment_form|crispy }}
+    <button type="submit">Add Comment</button>
+</form>
+
+<!-- Comments Section -->
+<h2>Comments</h2>
+{% if post.comments.all %}
+    <p>Total Comments: {{ post.comments.count }}</p>
+    <ul>
+        {% for comment in post.comments.all %}
+            <li>
+                <strong>{{ comment.name }}</strong> ({{ comment.created }})
+                <p>{{ comment.body }}</p>
+            </li>
+        {% endfor %}
+    </ul>
+{% else %}
+    <p>No comments yet.</p>
+{% endif %}
+
 {% endblock content %}

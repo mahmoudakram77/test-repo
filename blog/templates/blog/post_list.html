@@ -8,6 +8,10 @@
 <ul>
   <li><a href="{{ post.get_absolute_url }}">{{ post.title }}</a></li>
 </ul>
+
+
+  
+
 {% endfor %}
 {% include 'blog/pagination.html' with page=obj_page %} 
 {% endblock content %}
