@@ -49,6 +49,7 @@ INSTALLED_APPS = [
     'blog.apps.BlogConfig',
     "crispy_forms",
     "crispy_bootstrap5",
+    'taggit',
 ]
 
 MIDDLEWARE = [
