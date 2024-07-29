@@ -18,7 +18,7 @@ class Post(models.Model):
     updated = models.DateTimeField(auto_now=True)
     status = models.CharField(max_length=2, choices=Status.choices, default=Status.DRAFT)
 
-    tag = TaggableManager()
+    tags = TaggableManager()
 
     def __str__(self):
         return self.title

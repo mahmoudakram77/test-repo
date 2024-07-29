@@ -20,9 +20,10 @@ from django.http import HttpResponseRedirect
 
 class PostListView(ListView):
     model = Post
-    paginate_by = 1
+    paginate_by = 3 
     context_object_name = 'posts'
     template_name = 'blog/post_list.html'
+
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)

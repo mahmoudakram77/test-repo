@@ -5,9 +5,28 @@
  {% block content %}
 <h1>Blog Page</h1>
 {% for post in posts %}
+
+
 <ul>
   <li><a href="{{ post.get_absolute_url }}">{{ post.title }}</a></li>
+  <h6>{{post.pub_date}}</h6>
+  <H5>{{post.status}}</H5>
+  
+  {% if post.tags.all %}
+  tags: {{ post.tags.all|join:", " }}
+  {% else %}
+  no tag
+  {% endif %}
+    
+  
 </ul>
+
+  
+
+
+
+  
+
 
 
   
